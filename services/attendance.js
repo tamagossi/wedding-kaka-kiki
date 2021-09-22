@@ -18,7 +18,6 @@ export default class AttendanceService extends RequestAdapterService {
 		try {
 			const response = await super.sendPostRequest(`${process.env.AUTH_API}/login`);
 
-			console.log(response);
 			return response;
 		} catch (error) {
 			throw new Error('Get attendances: ' + error);

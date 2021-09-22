@@ -47,8 +47,6 @@ const OrganismTestimonial = () => {
 		})();
 	}, []);
 
-	console.log(greetings);
-
 	return (
 		<ContentWrapper style={{ minHeight: 0 }}>
 			<Col span={24}>
