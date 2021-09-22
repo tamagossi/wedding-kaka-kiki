@@ -1,4 +1,4 @@
-import { Col, Divider, Row } from 'antd';
+import { Col, Divider, Row, Typography } from 'antd';
 import Head from 'next/head';
 
 import OrganismAttendance from '../components/organisms/attendance';
@@ -26,6 +26,19 @@ export default function Home() {
 					<OrganismAttendance />
 					<OrganismTestimonial />
 				</Col>
+			</Row>
+
+			<Row justify="center">
+				<Typography.Text>
+					Created with ❤ (to{' '}
+					<Typography.Link href="https://github.com/kikipratiwi" target="_blank">
+						Kiki Pratiwi
+					</Typography.Link>
+					) by{' '}
+					<Typography.Link href="https://github.com/tamagossi" target="_blank">
+						tamagossi
+					</Typography.Link>
+				</Typography.Text>
 			</Row>
 		</>
 	);
