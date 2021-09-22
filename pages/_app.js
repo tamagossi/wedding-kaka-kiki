@@ -1,3 +1,4 @@
+import '../styles/colors.css';
 import '../styles/globals.css';
 import 'antd/dist/antd.css';
 

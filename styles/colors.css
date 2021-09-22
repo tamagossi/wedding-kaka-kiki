@@ -1,0 +1,13 @@
+.bg-rose-gold {
+	background-color: #d8a298;
+	background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #d8a298 300px),
+		repeating-linear-gradient(#e0a99f55, #e0a99f);
+}
+
+.rose-gold {
+	color: #e9b3a9;
+}
+
+.honey-white {
+	color: '#f2f3ef' !important;
+}
