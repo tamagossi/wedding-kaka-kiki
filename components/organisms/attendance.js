@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Button, Col, Divider, Form, message, Row } from 'antd';
+import { Button, Col, Divider, Form, Image, message, Row } from 'antd';
 
 import ContentWrapper from '../core/content-wrapper';
 import MoleculeTextInputGroup from '../molecules/input-group/text-input';
@@ -148,7 +147,7 @@ const OrganismAttendance = () => {
 								height: 300,
 							}}
 						>
-							<Image layout="fill" src={BANK_INFO_ENUM[bankType].image} />
+							<Image src={BANK_INFO_ENUM[bankType].image} width={285} height={285} />
 						</Col>
 					</Row>
 				</>
