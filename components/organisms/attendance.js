@@ -144,11 +144,14 @@ const OrganismAttendance = () => {
 								padding: 10,
 								background: 'white',
 								borderRadius: 10,
-								height: 300,
+								height: '300px',
+								backgroundImage: `url(${BANK_INFO_ENUM[bankType].image})`,
+								backgroundPosition: 'center',
+								backgroundRepeat: 'no-repeat',
+								backgroundSize: 'contain',
+								width: '300px',
 							}}
-						>
-							<Image src={BANK_INFO_ENUM[bankType].image} width={285} height={285} />
-						</Col>
+						/>
 					</Row>
 				</>
 			);
