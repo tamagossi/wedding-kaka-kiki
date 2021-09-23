@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ContentWrapper from '../core/content-wrapper';
 import { Button, Carousel, Col, Form, message, Row } from 'antd';
-import useMediaQuery from 'use-media-antd-query';
+import useMedia from 'use-media-antd-query';
 
 import AtomTitleGroup from '../atoms/title-group';
 import MoleculeTextAreaInputGroup from '../molecules/input-group/text-area';
@@ -12,7 +12,7 @@ import shuffleArray from '../../utils/shuffleArray';
 import GreetingService from '../../services/greeting';
 
 const OrganismTestimonial = () => {
-	const colSize = useMediaQuery();
+	const colSize = useMedia();
 	const isSmall = ['xs', 'sm'].includes(colSize);
 	const isMedium = ['md'].includes(colSize);
 
@@ -66,12 +66,14 @@ const OrganismTestimonial = () => {
 										style={{
 											color: '#fff',
 											minHeight: 280,
-										}}>
+										}}
+									>
 										<div
 											style={{
 												padding: 30,
 												borderRight: '1px solid rgba(255,255,255,0.7)',
-											}}>
+											}}
+										>
 											<p style={{ fontWeight: 900, fontSize: 20 }}>
 												- {name}
 											</p>
@@ -108,7 +110,8 @@ const OrganismTestimonial = () => {
 						block
 						onClick={sendGreeting}
 						size="large"
-						style={{ background: '#e0a99f55', color: 'white' }}>
+						style={{ background: '#e0a99f55', color: 'white' }}
+					>
 						Kirim Ucapan
 					</Button>
 				</Col>

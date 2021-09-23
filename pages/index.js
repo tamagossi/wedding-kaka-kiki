@@ -15,29 +15,27 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div style={{ height: '100vh', overflowY: 'auto' }}>
-				<Row>
-					<Col span={24} className="bg-rose-gold">
-						<OrganismSurah />
-						<OrganismInvitation />
-						<OrganismAttendance />
-						<OrganismTestimonial />
-					</Col>
-				</Row>
+			<Row>
+				<Col span={24} className="bg-rose-gold">
+					<OrganismSurah />
+					<OrganismInvitation />
+					<OrganismAttendance />
+					<OrganismTestimonial />
+				</Col>
+			</Row>
 
-				<Row justify="center">
-					<Typography.Text>
-						Created with ❤ (to{' '}
-						<Typography.Link href="https://github.com/kikipratiwi" target="_blank">
-							Kiki Pratiwi
-						</Typography.Link>
-						) by{' '}
-						<Typography.Link href="https://github.com/tamagossi" target="_blank">
-							tamagossi
-						</Typography.Link>
-					</Typography.Text>
-				</Row>
-			</div>
+			<Row justify="center">
+				<Typography.Text>
+					Created with ❤ (to{' '}
+					<Typography.Link href="https://github.com/kikipratiwi" target="_blank">
+						Kiki Pratiwi
+					</Typography.Link>
+					) by{' '}
+					<Typography.Link href="https://github.com/tamagossi" target="_blank">
+						tamagossi
+					</Typography.Link>
+				</Typography.Text>
+			</Row>
 		</>
 	);
 }
