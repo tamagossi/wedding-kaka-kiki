@@ -16,7 +16,7 @@ const OrganismSurah = () => {
 							sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda
 							(kebesaran Allah) bagi kaum yang berpikir.
 						</em>
-						” - <strong>Q.S Ar-Rum 21</strong>
+						” <br /> - <strong>Q.S Ar-Rum: 21</strong> -
 					</p>
 				</Col>
 			</Row>

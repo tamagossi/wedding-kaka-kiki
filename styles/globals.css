@@ -50,7 +50,3 @@ label {
 .ant-radio-checked .ant-radio-inner:after {
 	background-color: #d8a298;
 }
-
-.ant-radio:hover .ant-radio-inner {
-	border-color: #d8a298;
-}

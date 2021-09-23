@@ -54,8 +54,8 @@ const OrganismAttendance = () => {
 			return (
 				<AtomInfoGroup
 					title="Kirim Hadiah:"
-					subtitle="Jl. H. Aen Suhendra no. 3 09/11, Kec. Margaasih, Bandung, Jawa Barat, 40217
-						- Kiki Pratiwi +62-8382-9204-785"
+					subtitle="Jl. H. Aen Suhendra No. 03 RT 09/11, Kec. Margaasih, Bandung, Jawa Barat, 40217
+						- Kiki Pratiwi +62-819-3673-0228"
 				/>
 			);
 		}
@@ -146,9 +146,12 @@ const OrganismAttendance = () => {
 								background: 'white',
 								borderRadius: 10,
 								height: 300,
-							}}
-						>
-							<Image layout="fill" src={BANK_INFO_ENUM[bankType].image} />
+							}}>
+							<Image
+								layout="fill"
+								style={{ width: '100%', height: 'auto' }}
+								src={BANK_INFO_ENUM[bankType].image}
+							/>
 						</Col>
 					</Row>
 				</>
@@ -162,15 +165,14 @@ const OrganismAttendance = () => {
 				<Col xs={24} lg={18}>
 					<AtomTitleGroup
 						title="Konfirmasi Kehadiran"
-						subtitle="Dikarenakan masih diberlakukan pembatasan, maka dari itu kami menganjurkan
-						bagi rekan/keluarga untuk mengisi daftar hadir jika ingin mengunjungi venue
-						resepsi"
+						subtitle="Dikarenakan masih diberlakukannya pembatasan, maka dari itu kami menganjurkan
+						bagi rekan/keluarga yang akan menghadiri acara resepsi untuk mengisi daftar hadir"
 					/>
 				</Col>
 
 				<Col xs={24} lg={10}>
 					<Form className="julius" style={{ color: '#f2f3ef', marginTop: 0 }} form={form}>
-						<Row>
+						<Row gutter={8}>
 							<Col span={24}>
 								<MoleculeTextInputGroup
 									label="Nama"
@@ -181,7 +183,7 @@ const OrganismAttendance = () => {
 
 							<Col xs={24} lg={12}>
 								<MoleculeRadioInput
-									label="Apakah anda akan datang?"
+									label="Apakah anda akan hadir?"
 									name="is_attending"
 									onChange={(e) => setIsAttending(e.target.value)}
 									options={[
@@ -211,7 +213,11 @@ const OrganismAttendance = () => {
 				</Col>
 			</Row>
 
-			<Divider />
+			<Row justify="center">
+				<Col span={8}>
+					<Divider />
+				</Col>
+			</Row>
 
 			<Row justify="center">
 				<Col xs={24} lg={18}>
@@ -226,8 +232,7 @@ const OrganismAttendance = () => {
 					<Form
 						className="julius"
 						style={{ color: '#f2f3ef', marginTop: 0 }}
-						form={giftForm}
-					>
+						form={giftForm}>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
@@ -256,13 +261,12 @@ const OrganismAttendance = () => {
 			</Row>
 
 			<Row justify="center" style={{ marginTop: 20 }}>
-				<Col span={5}>
+				<Col xs={24} lg={10}>
 					<Button
 						block
 						onClick={confirmAttendance}
 						size="large"
-						style={{ background: '#e0a99f55', color: 'white' }}
-					>
+						style={{ background: '#e0a99f55', color: 'white' }}>
 						Konfirmasi
 					</Button>
 				</Col>

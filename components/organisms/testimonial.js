@@ -66,14 +66,12 @@ const OrganismTestimonial = () => {
 										style={{
 											color: '#fff',
 											minHeight: 280,
-										}}
-									>
+										}}>
 										<div
 											style={{
 												padding: 30,
 												borderRight: '1px solid rgba(255,255,255,0.7)',
-											}}
-										>
+											}}>
 											<p style={{ fontWeight: 900, fontSize: 20 }}>
 												- {name}
 											</p>
@@ -100,7 +98,7 @@ const OrganismTestimonial = () => {
 						<MoleculeTextAreaInputGroup
 							name="greeting"
 							label="Ucapan"
-							placeholder="ex: Hallo Kiki!! Tama!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!"
+							placeholder="ex: Hallo Kiki!! Raka!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!"
 						/>
 					</Form>
 				</Col>
@@ -110,8 +108,7 @@ const OrganismTestimonial = () => {
 						block
 						onClick={sendGreeting}
 						size="large"
-						style={{ background: '#e0a99f55', color: 'white' }}
-					>
+						style={{ background: '#e0a99f55', color: 'white' }}>
 						Kirim Ucapan
 					</Button>
 				</Col>

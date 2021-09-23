@@ -23,7 +23,7 @@ const OrganismInvitation = () => {
 					<div style={{ marginTop: 40 }} />
 
 					<p className="julius honey-white" style={{ ...fontStyle, fontSize: 18 }}>
-						Yang akan dilaksanakan pada tanggal:
+						Yang akan dilaksanakan pada:
 					</p>
 
 					<p className="julius honey-white" style={{ ...fontStyle, fontSize: 35 }}>
@@ -32,10 +32,13 @@ const OrganismInvitation = () => {
 
 					<p
 						className="julius honey-white"
-						style={{ ...fontStyle, fontSize: 20, marginTop: 20 }}
-					>
-						<strong>Yang bertempat di</strong>: <br /> Bumi Kresna, Cipatik, Pamekaran,
-						Soreang, Jl. Terusan Soreang - Bandung Barat
+						style={{ ...fontStyle, fontSize: 18, marginTop: 20 }}>
+						Yang bertempat di:
+					</p>
+
+					<p className="julius honey-white" style={{ ...fontStyle, fontSize: 20 }}>
+						<strong style={{ ...fontStyle, fontSize: 35 }}>Bumi Kresna</strong>
+						<br /> Jl. Terusan Soreang, Cipatik, Pamekaran, Soreang - Kab. Bandung
 					</p>
 
 					<iframe
@@ -45,7 +48,7 @@ const OrganismInvitation = () => {
 						src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15841.26671034045!2d107.5261747!3d-6.9719159!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x175d3c33a119adf5!2sBumi%20Kresna!5e0!3m2!1sen!2sid!4v1632316029904!5m2!1sen!2sid"
 						style={{ border: 0, marginTop: 25 }}
 						width={isSmall ? 420 : 550}
-					></iframe>
+					/>
 				</Space>
 			</p>
 		</ContentWrapper>
