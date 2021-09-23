@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import { Button, Col, Divider, Form, message, Row } from 'antd';
+import { Button, Col, Divider, Form, Image, message, Row } from 'antd';
 
 import ContentWrapper from '../core/content-wrapper';
 import MoleculeTextInputGroup from '../molecules/input-group/text-input';
@@ -145,14 +144,14 @@ const OrganismAttendance = () => {
 								padding: 10,
 								background: 'white',
 								borderRadius: 10,
-								height: 300,
-							}}>
-							<Image
-								layout="fill"
-								style={{ width: '100%', height: 'auto' }}
-								src={BANK_INFO_ENUM[bankType].image}
-							/>
-						</Col>
+								height: '300px',
+								backgroundImage: `url(${BANK_INFO_ENUM[bankType].image})`,
+								backgroundPosition: 'center',
+								backgroundRepeat: 'no-repeat',
+								backgroundSize: 'contain',
+								width: '300px',
+							}}
+						/>
 					</Row>
 				</>
 			);

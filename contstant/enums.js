@@ -27,12 +27,12 @@ export const BANK_INFO_ENUM = {
 		bank_name: 'Bank BSI',
 		no: '',
 		name: 'Kiki Pratiwi',
-		image: '',
+		image: '/bsi_kiki.png',
 	},
 	BNI_KIKI: {
 		bank_name: 'Bank BNI',
 		no: '',
 		name: 'Kiki Pratiwi ',
-		image: '',
+		image: '/bni_kiki.png',
 	},
 };
