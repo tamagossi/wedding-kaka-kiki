@@ -10,7 +10,7 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Wedding Kaka & Kiki</title>
+				<title>Marriage of Kiki & Kaka</title>
 				<meta name="description" content="A wedding web Invitation of Kaka & Kiki" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
