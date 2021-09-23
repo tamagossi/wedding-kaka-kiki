@@ -28,11 +28,22 @@ const OrganismAttendance = () => {
 			const attendanceValue = form.getFieldsValue();
 			const giftValue = giftForm.getFieldsValue();
 
-			if (!giftValue.bank) {
-				giftValue.bank = BANK_ENUM.BCA_KAKA;
+			const { is_attending, attendance_count } = attendanceValue;
+			const { bank } = giftValue;
+
+			if (is_attending) {
+				if (attendance_count < 1) {
+					message.error('Jumlah tamu harus lebih dari 0 jika anda menghadiri acara');
+					return;
+				}
+			} else {
+				attendanceValue.attendance_count = 0;
 			}
 
+			if (!bank) giftValue.bank = BANK_ENUM.BCA_KAKA;
+
 			await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
+			message.success('Kunjunganmu sudah tercatat');
 		} catch (error) {
 			message.error(error.message);
 		}

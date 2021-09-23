@@ -24,7 +24,9 @@ const OrganismTestimonial = () => {
 		try {
 			const greetings = await greetingService.getGreetings();
 
-			setGreetings(convertObjectToArray(greetings));
+			if (greetings) {
+				setGreetings(convertObjectToArray(greetings));
+			}
 		} catch (error) {
 			message.error(error.message);
 		}
