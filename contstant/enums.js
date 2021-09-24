@@ -1,6 +1,6 @@
 export const GIFT_ENUM = {
 	GOODS: 'GOODS',
-	TRANSFER: 'TRANFER',
+	TRANSFER: 'TRANSFER',
 };
 
 export const BANK_ENUM = {
