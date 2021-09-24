@@ -71,7 +71,13 @@ const OrganismTestimonial = () => {
 									<h3
 										className="julius"
 										style={{
-											minHeight: 900,
+											overflowY: 'auto',
+											maxHeight: ['xs', 'sm', 'md'].includes(size)
+												? 260
+												: 290,
+											minHeight: ['xs', 'sm', 'md'].includes(size)
+												? 230
+												: 260,
 										}}
 									>
 										<div
@@ -85,7 +91,9 @@ const OrganismTestimonial = () => {
 											<AtomText
 												italic
 												text={`"${greeting}"`}
-												additionalSize={0}
+												additionalSize={
+													['xs', 'sm', 'md'].includes(size) ? -2 : -7
+												}
 											/>
 										</div>
 									</h3>
