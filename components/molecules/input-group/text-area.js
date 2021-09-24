@@ -9,7 +9,7 @@ const MoleculeTextAreaInputGroup = ({ label, name, ...input }) => {
 			<AtomInputLabel name={name} label={label} />
 
 			<Form.Item name={name}>
-				<Input.TextArea {...input} rows={5} />
+				<Input.TextArea {...input} rows={4} maxLength={250} />
 			</Form.Item>
 		</>
 	);

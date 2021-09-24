@@ -10,13 +10,11 @@ const AtomText = ({ additionalSize = 0, text, style, ...props }) => {
 	return (
 		<Typography.Text
 			className="raleway honey-white"
-			style={{ marginBottom: 0, fontWeight: 200 }}
-			{...props}
-		>
+			style={{ marginBottom: 0, fontWeight: 200, ...style }}
+			{...props}>
 			<span
 				className="raleway honey-white"
-				style={{ color: '#f2f3ef', fontSize: FONT_SIZE[size] + additionalSize, ...style }}
-			>
+				style={{ color: '#f2f3ef', fontSize: FONT_SIZE[size] + additionalSize, ...style }}>
 				{text}
 			</span>
 		</Typography.Text>

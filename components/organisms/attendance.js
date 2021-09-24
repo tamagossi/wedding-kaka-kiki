@@ -19,6 +19,7 @@ const OrganismAttendance = () => {
 	const attendanceService = new AttendanceService();
 
 	const [isAttending, setIsAttending] = useState(true);
+	const [invitationForm, setInvitationForm] = useState();
 	const [giftType, setGiftType] = useState(GIFT_ENUM.GOODS);
 	const [bankType, setBankType] = useState(BANK_ENUM.BCA_KAKA);
 	const [form] = Form.useForm();
@@ -29,11 +30,11 @@ const OrganismAttendance = () => {
 			const attendanceValue = form.getFieldsValue();
 			const giftValue = giftForm.getFieldsValue();
 
-			const { is_attending, attendance_count } = attendanceValue;
+			const { name, is_attending, attendance_count } = attendanceValue;
 			const { bank } = giftValue;
 
 			if (is_attending) {
-				if (attendance_count < 1) {
+				if (attendance_count < 1 || attendance_count === undefined) {
 					message.error('Jumlah tamu harus lebih dari 0 jika anda menghadiri acara');
 					return;
 				}
@@ -43,8 +44,18 @@ const OrganismAttendance = () => {
 
 			if (!bank) giftValue.bank = BANK_ENUM.BCA_KAKA;
 
-			await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
-			message.success('Kunjunganmu sudah tercatat');
+			if (
+				name &&
+				invitationForm &&
+				((is_attending === true && attendance_count > 0) || is_attending === false)
+			) {
+				await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
+				message.success('Kunjunganmu sudah tercatat');
+
+				form.resetFields();
+				setInvitationForm();
+				setIsAttending();
+			}
 		} catch (error) {
 			message.error(error.message);
 		}
@@ -80,11 +91,11 @@ const OrganismAttendance = () => {
 						defaultValue={BANK_ENUM.BCA_KAKA}
 						options={[
 							{
-								label: 'BANK BCA',
+								label: 'BANK BCA - Auliya Raka Pratama',
 								value: BANK_ENUM.BCA_KAKA,
 							},
 							{
-								label: 'BANK BSI - Raka Pratama',
+								label: 'BANK BSI - Auliya Raka Pratama',
 								value: BANK_ENUM.BSI_KAKA,
 							},
 							{
@@ -92,7 +103,7 @@ const OrganismAttendance = () => {
 								value: BANK_ENUM.BSI_KIKI,
 							},
 							{
-								label: 'BANK BNI',
+								label: 'BANK BNI - Kiki Pratiwi',
 								value: BANK_ENUM.BNI_KIKI,
 							},
 						]}
@@ -187,6 +198,7 @@ const OrganismAttendance = () => {
 									label="Tamu dari"
 									name="invitation_from"
 									placeholder="Pilih yang mengundang anda"
+									onChange={setInvitationForm}
 									options={[
 										{
 											label: 'Ibu Siti Maesaroh / Bpk. Nanang Irawan',
@@ -198,11 +210,11 @@ const OrganismAttendance = () => {
 										},
 										{
 											label: 'Auliya Raka Pratama',
-											value: GIFT_ENUM.KAKA,
+											value: INVITATION_FROM_ENUM.KAKA,
 										},
 										{
 											label: 'Kiki Pratiwi',
-											value: GIFT_ENUM.KIKI,
+											value: INVITATION_FROM_ENUM.KIKI,
 										},
 									]}
 								/>

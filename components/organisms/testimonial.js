@@ -37,9 +37,14 @@ const OrganismTestimonial = () => {
 	const sendGreeting = async () => {
 		try {
 			const greeting = form.getFieldsValue();
-			await greetingService.addGreeting(greeting);
+			if (greeting.name && greeting.greeting) {
+				await greetingService.addGreeting(greeting);
+				message.success('Terimakasih atas ucapannya!');
 
-			await getGreeting();
+				form.resetFields();
+
+				await getGreeting();
+			}
 		} catch (error) {
 			message.error(error.message);
 		}
@@ -67,14 +72,12 @@ const OrganismTestimonial = () => {
 										className="julius"
 										style={{
 											minHeight: 280,
-										}}
-									>
+										}}>
 										<div
 											style={{
 												padding: 30,
 												borderRight: '1px solid rgba(255,255,255,0.7)',
-											}}
-										>
+											}}>
 											<AtomCinzelDecorativeText text={`- ${name}`} strong />
 											<br />
 											<AtomText
