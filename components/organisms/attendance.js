@@ -250,13 +250,15 @@ const OrganismAttendance = () => {
 										},
 										({ getFieldValue }) => ({
 											validator(_, value) {
-												if (getFieldValue('is_attending') && value > 0) {
-													return Promise.resolve();
+												const attending = getFieldValue('is_attending');
+
+												if (attending && value < 1) {
+													return Promise.reject(
+														new Error('Jumlah tamu harus lebih dari 0')
+													);
 												}
 
-												return Promise.reject(
-													new Error('Jumlah tamu harus lebih dari 0')
-												);
+												return Promise.resolve();
 											},
 										}),
 									]}
