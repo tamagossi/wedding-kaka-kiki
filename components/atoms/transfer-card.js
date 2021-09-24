@@ -1,21 +1,12 @@
-import { Col } from 'antd';
+import { Button, Col } from 'antd';
 import React from 'react';
 
-const AtomTransferCard = ({ value, onClick }) => {
+const AtomTransferCard = ({ value, onClick, ...buttonProps }) => {
 	return (
-		<Col
-			onClick={onClick}
-			span={5}
-			style={{
-				textAlign: 'center',
-				background: 'white',
-				padding: 4,
-				color: 'black',
-				borderRadius: 5,
-				cursor: 'pointer',
-			}}
-		>
-			{value}
+		<Col span={5}>
+			<Button block onClick={onClick} style={{ borderRadius: 5 }} {...buttonProps}>
+				{value}
+			</Button>
 		</Col>
 	);
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Col, Divider, Form, message, Row } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
 
 import AtomButton from '../atoms/button';
 import AtomInfoGroup from '../atoms/info-group';
@@ -21,6 +22,7 @@ const OrganismAttendance = () => {
 	const [isAttending, setIsAttending] = useState(true);
 	const [giftType, setGiftType] = useState(GIFT_ENUM.GOODS);
 	const [bankType, setBankType] = useState(BANK_ENUM.BCA_KAKA);
+	const [selectedTransferAmount, setSelectedTransferAmount] = useState();
 	const [form] = Form.useForm();
 	const [giftForm] = Form.useForm();
 
@@ -56,6 +58,8 @@ const OrganismAttendance = () => {
 		}
 
 		const setTransferAmount = (value) => {
+			setSelectedTransferAmount(value);
+
 			giftForm.setFieldsValue({
 				gift_amount: value,
 			});
@@ -93,16 +97,26 @@ const OrganismAttendance = () => {
 					<AtomText text="Pilih Jumlah:" />
 
 					<Row justify="space-around" gutter={24}>
-						<AtomTransferCard value={50000} onClick={() => setTransferAmount(50000)} />
 						<AtomTransferCard
+							icon={selectedTransferAmount === 50000 && <CheckOutlined />}
+							value={50000}
+							onClick={() => setTransferAmount(50000)}
+						/>
+						<AtomTransferCard
+							icon={selectedTransferAmount === 100000 && <CheckOutlined />}
 							value={100000}
 							onClick={() => setTransferAmount(100000)}
 						/>
 						<AtomTransferCard
+							icon={selectedTransferAmount === 200000 && <CheckOutlined />}
 							value={200000}
 							onClick={() => setTransferAmount(200000)}
 						/>
-						<AtomTransferCard value={'Lainnya'} onClick={() => setTransferAmount(0)} />
+						<AtomTransferCard
+							icon={selectedTransferAmount === 0 && <CheckOutlined />}
+							value={'Lainnya'}
+							onClick={() => setTransferAmount(0)}
+						/>
 					</Row>
 
 					<Row gutter={24} style={{ marginTop: 20 }}>
@@ -124,7 +138,7 @@ const OrganismAttendance = () => {
 									{ required: true, message: 'Harus diisi' },
 									({ __ }) => ({
 										validator(_, value) {
-											if (attending && value < 1) {
+											if (value < 1) {
 												return Promise.reject(
 													new Error('Jumlah transfer harus lebih dari 0')
 												);
@@ -302,7 +316,8 @@ const OrganismAttendance = () => {
 					<Form
 						form={giftForm}
 						initialValues={{ bank: BANK_ENUM.BCA_KAKA }}
-						scrollToFirstError>
+						scrollToFirstError
+					>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
