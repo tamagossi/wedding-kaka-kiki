@@ -239,7 +239,7 @@ const OrganismAttendance = () => {
 							<Col xs={24} lg={12}>
 								<MoleculeNumberInputGroup
 									disabled={!isAttending}
-									label="Jumlah"
+									label="Jumlah tamu"
 									name="attendance_count"
 									placeholder="Jumlah Tamu"
 									formRef={form}
@@ -286,8 +286,7 @@ const OrganismAttendance = () => {
 					<Form
 						form={giftForm}
 						initialValues={{ bank: BANK_ENUM.BCA_KAKA }}
-						scrollToFirstError
-					>
+						scrollToFirstError>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
