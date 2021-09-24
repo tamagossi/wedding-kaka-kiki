@@ -63,7 +63,7 @@ const OrganismInvitation = () => {
 				<Row style={{ flexDirection: 'column' }}>
 					<Row justify="center">
 						<AtomText text="Yang bertempat di: &nbsp;" />
-						<AtomText text="Balai Bumi Kresna," strong />
+						<AtomText text="Balai Bumi Kresna,&nbsp;" strong />
 						<AtomText text="Jl. Terusan Soreang, Cipatik, Pamekaran, Soreang - Kab. Bandung" />
 					</Row>
 
