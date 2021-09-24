@@ -57,3 +57,7 @@ label {
 .tc {
 	text-align: center !important;
 }
+
+.tl {
+	text-align: left !important;
+}

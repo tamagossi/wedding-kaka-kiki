@@ -1,16 +1,12 @@
 import React from 'react';
 import { Form, Select } from 'antd';
 
+import AtomInputLabel from '../../atoms/input-label';
+
 const MoleculeSelectInput = ({ label, name, onChange, options = [], ...input }) => {
 	return (
 		<>
-			<label
-				className="julius"
-				htmlFor={name}
-				style={{ fontSize: 18, marginBottom: 5, display: 'block' }}
-			>
-				{label}:
-			</label>
+			<AtomInputLabel name={name} label={label} />
 
 			<Form.Item name={name}>
 				<Select onChange={onChange} {...input}>

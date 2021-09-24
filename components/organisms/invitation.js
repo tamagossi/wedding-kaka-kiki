@@ -46,12 +46,12 @@ const OrganismInvitation = () => {
 				<Row style={{ flexDirection: 'column' }}>
 					<AtomText text="Yang akan dilaksanakan pada:" />
 					<Row justify="center">
-						<AtomText strong text="Pukul 09.00 - 11.30: &nbsp;" />
-						<AtomText text="Sesi Akad & Keluarga" />
+						<AtomText strong text="Pukul 09.00 - 11.30: &nbsp;" additionalSize={-3} />
+						<AtomText text="Sesi Akad & Keluarga" additionalSize={-3} />
 					</Row>
 					<Row justify="center">
-						<AtomText strong text="Pukul 11.30 - 13.45: &nbsp;" />
-						<AtomText text="Sesi Teman & Rekan Kerja" />
+						<AtomText strong text="Pukul 11.30 - 13.45: &nbsp;" additionalSize={-3} />
+						<AtomText text="Sesi Teman & Rekan Kerja" additionalSize={-3} />
 					</Row>
 				</Row>
 

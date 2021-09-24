@@ -1,29 +1,25 @@
 import React from 'react';
+import useMedia from 'use-media-antd-query';
+import { Space } from 'antd';
+
+import AtomText from './text';
+import AtomCinzelDecorativeText from './cinzel-text';
+import { FONT_SIZE } from '../../contstant/mediaQuery';
 
 const AtomTitleGroup = ({ title, subtitle }) => {
-	return (
-		<>
-			{title && (
-				<h1
-					className="julius"
-					style={{
-						color: '#f2f3ef',
-						fontSize: 40,
-						fontWeight: 'bold',
-						marginBottom: 0,
-						textAlign: 'center',
-					}}
-				>
-					{title}
-				</h1>
-			)}
+	const size = useMedia();
 
-			{subtitle && (
-				<p className="julius" style={{ fontSize: 18, textAlign: 'center' }}>
-					{subtitle}
-				</p>
+	return (
+		<Space direction="vertical" size={0}>
+			{title && (
+				<AtomCinzelDecorativeText
+					text={title}
+					strong
+					additionalSize={FONT_SIZE[size] - 8}
+				/>
 			)}
-		</>
+			{subtitle && <AtomText text={subtitle} />}
+		</Space>
 	);
 };
 

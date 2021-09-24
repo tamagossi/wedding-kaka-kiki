@@ -1,12 +1,12 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 
+import AtomInputLabel from '../../atoms/input-label';
+
 const MoleculeTextAreaInputGroup = ({ label, name, ...input }) => {
 	return (
 		<>
-			<label className="julius" htmlFor={name} style={{ fontSize: 18 }}>
-				{label}:
-			</label>
+			<AtomInputLabel name={name} label={label} />
 
 			<Form.Item name={name}>
 				<Input.TextArea {...input} rows={5} />

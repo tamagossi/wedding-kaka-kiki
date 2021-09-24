@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Col, Divider, Form, Image, message, Row } from 'antd';
+import { Col, Divider, Form, message, Row } from 'antd';
 
+import AtomButton from '../atoms/button';
+import AtomInfoGroup from '../atoms/info-group';
+import AtomTitleGroup from '../atoms/title-group';
+import AtomTransferCard from '../atoms/transfer-card';
+import AttendanceService from '../../services/attendance';
 import ContentWrapper from '../core/content-wrapper';
-import MoleculeTextInputGroup from '../molecules/input-group/text-input';
 import MoleculeNumberInputGroup from '../molecules/input-group/number-input';
 import MoleculeRadioInput from '../molecules/input-group/radio-input';
 import MoleculeSelectInput from '../molecules/input-group/select-input';
-import AtomTransferCard from '../atoms/transfer-card';
+import MoleculeTextInputGroup from '../molecules/input-group/text-input';
 
-import { BANK_ENUM, BANK_INFO_ENUM, GIFT_ENUM } from '../../contstant/enums';
-import AttendanceService from '../../services/attendance';
-import AtomTitleGroup from '../atoms/title-group';
-import AtomInfoGroup from '../atoms/info-group';
+import { BANK_ENUM, BANK_INFO_ENUM, GIFT_ENUM, INVITATION_FROM_ENUM } from '../../contstant/enums';
+import AtomText from '../atoms/text';
 
 const OrganismAttendance = () => {
 	const attendanceService = new AttendanceService();
@@ -51,11 +53,13 @@ const OrganismAttendance = () => {
 	const renderGiftDestination = () => {
 		if (giftType === GIFT_ENUM.GOODS) {
 			return (
-				<AtomInfoGroup
-					title="Kirim Hadiah:"
-					subtitle="Jl. H. Aen Suhendra No. 03 RT 09/11, Kec. Margaasih, Bandung, Jawa Barat, 40217
-						- Kiki Pratiwi +62-819-3673-0228"
-				/>
+				<div className="tc">
+					<AtomInfoGroup
+						title="Kirim Hadiah:"
+						subtitle="Jl. H. Aen Suhendra No. 03 RT 09/11, Kec. Margaasih, Bandung, Jawa Barat, 40217
+							- Kiki Pratiwi +62-819-3673-0228"
+					/>
+				</div>
 			);
 		}
 
@@ -94,9 +98,7 @@ const OrganismAttendance = () => {
 						]}
 					/>
 
-					<p style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'center' }}>
-						Pilih Jumlah:
-					</p>
+					<AtomText text="Pilih Jumlah:" />
 
 					<Row justify="space-around" gutter={24}>
 						<AtomTransferCard value={50000} onClick={() => setTransferAmount(50000)} />
@@ -130,7 +132,7 @@ const OrganismAttendance = () => {
 						</Col>
 					</Row>
 
-					<Row justify="center" gutter={24} style={{ marginTop: 20 }}>
+					<Row className="tc" justify="center" gutter={[0, 24]} style={{ marginTop: 20 }}>
 						<Col span={20}>
 							<AtomInfoGroup
 								title={BANK_INFO_ENUM[bankType].bank_name}
@@ -160,8 +162,8 @@ const OrganismAttendance = () => {
 
 	return (
 		<ContentWrapper>
-			<Row justify="center">
-				<Col xs={24} lg={18}>
+			<Row justify="center" gutter={[0, 36]}>
+				<Col className="tc" xs={24} lg={18}>
 					<AtomTitleGroup
 						title="Konfirmasi Kehadiran"
 						subtitle="Dikarenakan masih diberlakukannya pembatasan, maka dari itu kami menganjurkan
@@ -170,13 +172,39 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form className="julius" style={{ color: '#f2f3ef', marginTop: 0 }} form={form}>
+					<Form form={form}>
 						<Row gutter={8}>
 							<Col span={24}>
 								<MoleculeTextInputGroup
 									label="Nama"
 									name="name"
 									placeholder="Nama Tamu"
+								/>
+							</Col>
+
+							<Col span={24}>
+								<MoleculeSelectInput
+									label="Tamu dari"
+									name="invitation_from"
+									placeholder="Pilih yang mengundang anda"
+									options={[
+										{
+											label: 'Ibu Siti Maesaroh / Bpk. Nanang Irawan',
+											value: INVITATION_FROM_ENUM.MAMAH_BAPAK,
+										},
+										{
+											label: 'Ibu Nia Krisni F / Bpk. (Alm) Agus Susanto / Bpk. Ridwan Saepudin',
+											value: INVITATION_FROM_ENUM.IBU_AYAH,
+										},
+										{
+											label: 'Auliya Raka Pratama',
+											value: GIFT_ENUM.KAKA,
+										},
+										{
+											label: 'Kiki Pratiwi',
+											value: GIFT_ENUM.KIKI,
+										},
+									]}
 								/>
 							</Col>
 
@@ -218,8 +246,8 @@ const OrganismAttendance = () => {
 				</Col>
 			</Row>
 
-			<Row justify="center">
-				<Col xs={24} lg={18}>
+			<Row justify="center" gutter={[0, 36]}>
+				<Col className="tc" xs={24} lg={18}>
 					<AtomTitleGroup
 						title="Wedding Gift"
 						subtitle="Your blessing and coming to our wedding are enough. However, if you want
@@ -228,10 +256,7 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form
-						className="julius"
-						style={{ color: '#f2f3ef', marginTop: 0 }}
-						form={giftForm}>
+					<Form form={giftForm}>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
@@ -261,13 +286,7 @@ const OrganismAttendance = () => {
 
 			<Row justify="center" style={{ marginTop: 20 }}>
 				<Col xs={24} lg={10}>
-					<Button
-						block
-						onClick={confirmAttendance}
-						size="large"
-						style={{ background: '#e0a99f55', color: 'white' }}>
-						Konfirmasi
-					</Button>
+					<AtomButton onClick={confirmAttendance}>Konfirmasi</AtomButton>
 				</Col>
 			</Row>
 		</ContentWrapper>

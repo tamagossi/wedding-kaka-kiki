@@ -10,6 +10,13 @@ export const BANK_ENUM = {
 	BNI_KIKI: 'BNI_KIKI',
 };
 
+export const INVITATION_FROM_ENUM = {
+	MAMAH_BAPAK: 'MAMAH_BAPAK',
+	IBU_AYAH: 'IBU_AYAH',
+	KAKA: 'KAKA',
+	KIKI: 'KIKI',
+};
+
 export const BANK_INFO_ENUM = {
 	BCA_KAKA: {
 		bank_name: 'Bank BCA',

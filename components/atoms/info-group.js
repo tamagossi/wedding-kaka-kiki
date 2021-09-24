@@ -1,28 +1,14 @@
 import React from 'react';
+import { Row } from 'antd';
 
-const AtomInfoGroup = ({ title, subtitle }) => {
+import AtomText from './text';
+
+const AtomInfoGroup = ({ className, title, subtitle }) => {
 	return (
-		<>
-			{title && (
-				<p
-					className="julius"
-					style={{
-						fontSize: 22,
-						fontWeight: 'bold',
-						marginBottom: 0,
-						textAlign: 'center',
-					}}
-				>
-					{title}
-				</p>
-			)}
-
-			{subtitle && (
-				<p className="julius" style={{ fontSize: 18, textAlign: 'center' }}>
-					{subtitle}
-				</p>
-			)}
-		</>
+		<Row style={{ flexDirection: 'column' }}>
+			{title && <AtomText text={title} strong />}
+			{subtitle && <AtomText text={subtitle} additionalSize={-2} />}
+		</Row>
 	);
 };
 

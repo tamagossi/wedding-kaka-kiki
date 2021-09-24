@@ -1,6 +1,8 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 
+import AtomInputLabel from '../../atoms/input-label';
+
 const MoleculeNumberInputGroup = ({ name, type, label, formRef, ...input }) => {
 	const formatValue = (event) => {
 		let value = event.target.value;
@@ -28,9 +30,7 @@ const MoleculeNumberInputGroup = ({ name, type, label, formRef, ...input }) => {
 
 	return (
 		<>
-			<label className="julius" htmlFor={name} style={{ fontSize: 18 }}>
-				{label}:
-			</label>
+			<AtomInputLabel name={name} label={label} />
 
 			<Form.Item name={name}>
 				<Input
