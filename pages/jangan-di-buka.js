@@ -54,7 +54,6 @@ const JanganDiBuka = () => {
 	let totalBNIKiki = 0;
 
 	attendances.forEach((attend) => {
-		console.log(attend);
 		const { attendance_count, gift_type, gift_amount, is_attending, bank } = attend;
 
 		if (is_attending) {
@@ -84,10 +83,6 @@ const JanganDiBuka = () => {
 			}
 		}
 	});
-
-	console.log(totalAttendance);
-	console.log(totalGift);
-	console.log(formatCurrency({ value: totalTransfer }));
 
 	return (
 		<Row style={{ padding: 50 }}>

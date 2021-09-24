@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Col, Divider, Form, message, Row } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
 
 import AtomButton from '../atoms/button';
 import AtomInfoGroup from '../atoms/info-group';
@@ -21,32 +22,25 @@ const OrganismAttendance = () => {
 	const [isAttending, setIsAttending] = useState(true);
 	const [giftType, setGiftType] = useState(GIFT_ENUM.GOODS);
 	const [bankType, setBankType] = useState(BANK_ENUM.BCA_KAKA);
+	const [selectedTransferAmount, setSelectedTransferAmount] = useState();
 	const [form] = Form.useForm();
 	const [giftForm] = Form.useForm();
 
 	const confirmAttendance = async () => {
 		try {
+			await form.validateFields();
+			await giftForm.validateFields();
+
 			const attendanceValue = form.getFieldsValue();
 			const giftValue = giftForm.getFieldsValue();
 
-			const { is_attending, attendance_count } = attendanceValue;
-			const { bank } = giftValue;
-
-			if (is_attending) {
-				if (attendance_count < 1) {
-					message.error('Jumlah tamu harus lebih dari 0 jika anda menghadiri acara');
-					return;
-				}
-			} else {
-				attendanceValue.attendance_count = 0;
-			}
-
-			if (!bank) giftValue.bank = BANK_ENUM.BCA_KAKA;
-
 			await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
-			message.success('Kunjunganmu sudah tercatat');
+			message.info('Kunjunganmu sudah tercatat');
+
+			form.resetFields();
+			giftForm.resetFields();
 		} catch (error) {
-			message.error(error.message);
+			message.error('Periksa kembali data yang anda masukkan');
 		}
 	};
 
@@ -64,6 +58,8 @@ const OrganismAttendance = () => {
 		}
 
 		const setTransferAmount = (value) => {
+			setSelectedTransferAmount(value);
+
 			giftForm.setFieldsValue({
 				gift_amount: value,
 			});
@@ -80,11 +76,11 @@ const OrganismAttendance = () => {
 						defaultValue={BANK_ENUM.BCA_KAKA}
 						options={[
 							{
-								label: 'BANK BCA',
+								label: 'BANK BCA - Auliya Raka Pratama',
 								value: BANK_ENUM.BCA_KAKA,
 							},
 							{
-								label: 'BANK BSI - Raka Pratama',
+								label: 'BANK BSI - Auliya Raka Pratama',
 								value: BANK_ENUM.BSI_KAKA,
 							},
 							{
@@ -92,7 +88,7 @@ const OrganismAttendance = () => {
 								value: BANK_ENUM.BSI_KIKI,
 							},
 							{
-								label: 'BANK BNI',
+								label: 'BANK BNI - Kiki Pratiwi',
 								value: BANK_ENUM.BNI_KIKI,
 							},
 						]}
@@ -101,16 +97,26 @@ const OrganismAttendance = () => {
 					<AtomText text="Pilih Jumlah:" />
 
 					<Row justify="space-around" gutter={24}>
-						<AtomTransferCard value={50000} onClick={() => setTransferAmount(50000)} />
 						<AtomTransferCard
+							icon={selectedTransferAmount === 50000 && <CheckOutlined />}
+							value={50000}
+							onClick={() => setTransferAmount(50000)}
+						/>
+						<AtomTransferCard
+							icon={selectedTransferAmount === 100000 && <CheckOutlined />}
 							value={100000}
 							onClick={() => setTransferAmount(100000)}
 						/>
 						<AtomTransferCard
+							icon={selectedTransferAmount === 200000 && <CheckOutlined />}
 							value={200000}
 							onClick={() => setTransferAmount(200000)}
 						/>
-						<AtomTransferCard value={'Lainnya'} onClick={() => setTransferAmount(0)} />
+						<AtomTransferCard
+							icon={selectedTransferAmount === 0 && <CheckOutlined />}
+							value={'Lainnya'}
+							onClick={() => setTransferAmount(0)}
+						/>
 					</Row>
 
 					<Row gutter={24} style={{ marginTop: 20 }}>
@@ -128,6 +134,20 @@ const OrganismAttendance = () => {
 								name="gift_amount"
 								placeholder="Jumlah"
 								formRef={form}
+								rules={[
+									{ required: true, message: 'Harus diisi' },
+									({ __ }) => ({
+										validator(_, value) {
+											if (value < 1) {
+												return Promise.reject(
+													new Error('Jumlah transfer harus lebih dari 0')
+												);
+											}
+
+											return Promise.resolve();
+										},
+									}),
+								]}
 							/>
 						</Col>
 					</Row>
@@ -172,13 +192,19 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form form={form}>
+					<Form form={form} initialValues={{ attendance_count: 0 }} scrollToFirstError>
 						<Row gutter={8}>
 							<Col span={24}>
 								<MoleculeTextInputGroup
 									label="Nama"
 									name="name"
 									placeholder="Nama Tamu"
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 								/>
 							</Col>
 
@@ -187,6 +213,12 @@ const OrganismAttendance = () => {
 									label="Tamu dari"
 									name="invitation_from"
 									placeholder="Pilih yang mengundang anda"
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 									options={[
 										{
 											label: 'Ibu Siti Maesaroh / Bpk. Nanang Irawan',
@@ -198,11 +230,11 @@ const OrganismAttendance = () => {
 										},
 										{
 											label: 'Auliya Raka Pratama',
-											value: GIFT_ENUM.KAKA,
+											value: INVITATION_FROM_ENUM.KAKA,
 										},
 										{
 											label: 'Kiki Pratiwi',
-											value: GIFT_ENUM.KIKI,
+											value: INVITATION_FROM_ENUM.KIKI,
 										},
 									]}
 								/>
@@ -213,6 +245,12 @@ const OrganismAttendance = () => {
 									label="Apakah anda akan hadir?"
 									name="is_attending"
 									onChange={(e) => setIsAttending(e.target.value)}
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 									options={[
 										{
 											label: 'Ya',
@@ -229,10 +267,29 @@ const OrganismAttendance = () => {
 							<Col xs={24} lg={12}>
 								<MoleculeNumberInputGroup
 									disabled={!isAttending}
-									label="Jumlah"
+									label="Jumlah tamu"
 									name="attendance_count"
 									placeholder="Jumlah Tamu"
 									formRef={form}
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+										({ getFieldValue }) => ({
+											validator(_, value) {
+												const attending = getFieldValue('is_attending');
+
+												if (attending && value < 1) {
+													return Promise.reject(
+														new Error('Jumlah tamu harus lebih dari 0')
+													);
+												}
+
+												return Promise.resolve();
+											},
+										}),
+									]}
 								/>
 							</Col>
 						</Row>
@@ -256,7 +313,11 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form form={giftForm}>
+					<Form
+						form={giftForm}
+						initialValues={{ bank: BANK_ENUM.BCA_KAKA }}
+						scrollToFirstError
+					>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
@@ -264,7 +325,6 @@ const OrganismAttendance = () => {
 									name="gift_type"
 									placeholder="Pilih hadiah yang ingin anda beri"
 									onChange={(value) => setGiftType(value)}
-									defaultValue={GIFT_ENUM.GOODS}
 									options={[
 										{
 											label: 'Kirim Hadiah',

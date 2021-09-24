@@ -1,6 +1,6 @@
 export const GIFT_ENUM = {
 	GOODS: 'GOODS',
-	TRANSFER: 'TRANFER',
+	TRANSFER: 'TRANSFER',
 };
 
 export const BANK_ENUM = {
@@ -32,13 +32,13 @@ export const BANK_INFO_ENUM = {
 	},
 	BSI_KIKI: {
 		bank_name: 'Bank BSI',
-		no: '',
+		no: '710-946-7272',
 		name: 'Kiki Pratiwi',
 		image: '/bsi_kiki.png',
 	},
 	BNI_KIKI: {
 		bank_name: 'Bank BNI',
-		no: '',
+		no: '113-454-9905',
 		name: 'Kiki Pratiwi ',
 		image: '/bni_kiki.png',
 	},

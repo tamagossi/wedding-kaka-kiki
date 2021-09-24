@@ -37,9 +37,14 @@ const OrganismTestimonial = () => {
 	const sendGreeting = async () => {
 		try {
 			const greeting = form.getFieldsValue();
-			await greetingService.addGreeting(greeting);
+			if (greeting.name && greeting.greeting) {
+				await greetingService.addGreeting(greeting);
+				message.success('Terimakasih atas ucapannya!');
 
-			await getGreeting();
+				form.resetFields();
+
+				await getGreeting();
+			}
 		} catch (error) {
 			message.error(error.message);
 		}
@@ -53,11 +58,11 @@ const OrganismTestimonial = () => {
 
 	return (
 		<ContentWrapper style={{ minHeight: 0 }}>
-			<Col span={24}>
-				<AtomTitleGroup title="Have anything to say?" />
-			</Col>
+			<Row justify="center">
+				<Col className="tc" span={24}>
+					<AtomTitleGroup title="Have anything to say?" />
+				</Col>
 
-			<Row justify="center" align="top">
 				{greetings && (
 					<Col xs={24} style={{ margin: '40px 0' }}>
 						<Carousel autoplay slidesToShow={CAROUSEL_ITEM[size]}>
@@ -66,7 +71,13 @@ const OrganismTestimonial = () => {
 									<h3
 										className="julius"
 										style={{
-											minHeight: 280,
+											overflowY: 'auto',
+											maxHeight: ['xs', 'sm', 'md'].includes(size)
+												? 260
+												: 290,
+											minHeight: ['xs', 'sm', 'md'].includes(size)
+												? 230
+												: 260,
 										}}
 									>
 										<div
@@ -80,7 +91,9 @@ const OrganismTestimonial = () => {
 											<AtomText
 												italic
 												text={`"${greeting}"`}
-												additionalSize={0}
+												additionalSize={
+													['xs', 'sm', 'md'].includes(size) ? -2 : -7
+												}
 											/>
 										</div>
 									</h3>
@@ -90,23 +103,32 @@ const OrganismTestimonial = () => {
 					</Col>
 				)}
 
-				<Col xs={20} lg={15}>
-					<Form form={form} style={{ color: 'white' }}>
+				<Col xs={22} lg={20}>
+					<Form
+						form={form}
+						style={{ color: 'white' }}
+						scrollToFirstError
+						initialValues={{
+							greeting: 'Selamat Kiki!! Tama!! ...',
+						}}
+					>
 						<MoleculeTextInputGroup
 							name="name"
 							label="Pengirim"
 							placeholder="ex: Anonymous Tampan"
+							rules={[{ required: true, message: 'Tidak boleh kosong' }]}
 						/>
 
 						<MoleculeTextAreaInputGroup
 							name="greeting"
 							label="Ucapan"
 							placeholder="ex: Hallo Kiki!! Raka!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!"
+							rules={[{ required: true, message: 'Tidak boleh kosong' }]}
 						/>
 					</Form>
 				</Col>
 
-				<Col xs={20} lg={15}>
+				<Col xs={22} lg={20}>
 					<AtomButton onClick={sendGreeting}>Kirim Ucapan</AtomButton>
 				</Col>
 			</Row>
