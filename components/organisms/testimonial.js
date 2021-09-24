@@ -58,11 +58,11 @@ const OrganismTestimonial = () => {
 
 	return (
 		<ContentWrapper style={{ minHeight: 0 }}>
-			<Col span={24}>
-				<AtomTitleGroup title="Have anything to say?" />
-			</Col>
+			<Row justify="center">
+				<Col className="tc" span={24}>
+					<AtomTitleGroup title="Have anything to say?" />
+				</Col>
 
-			<Row justify="center" align="top">
 				{greetings && (
 					<Col xs={24} style={{ margin: '40px 0' }}>
 						<Carousel autoplay slidesToShow={CAROUSEL_ITEM[size]}>
@@ -103,7 +103,7 @@ const OrganismTestimonial = () => {
 					</Col>
 				)}
 
-				<Col xs={20} lg={15}>
+				<Col xs={22} lg={20}>
 					<Form
 						form={form}
 						style={{ color: 'white' }}
@@ -128,7 +128,7 @@ const OrganismTestimonial = () => {
 					</Form>
 				</Col>
 
-				<Col xs={20} lg={15}>
+				<Col xs={22} lg={20}>
 					<AtomButton onClick={sendGreeting}>Kirim Ucapan</AtomButton>
 				</Col>
 			</Row>
