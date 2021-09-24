@@ -4,14 +4,14 @@ import { Form, Input } from 'antd';
 
 import AtomInputLabel from '../../atoms/input-label';
 
-const MoleculeTextInputGroup = ({ label, name, ...input }) => {
+const MoleculeTextInputGroup = ({ label, name, rules, ...input }) => {
 	const size = useMedia();
 
 	return (
 		<>
 			<AtomInputLabel name={name} label={label} />
 
-			<Form.Item name={name}>
+			<Form.Item name={name} rules={rules}>
 				<Input {...input} />
 			</Form.Item>
 		</>
