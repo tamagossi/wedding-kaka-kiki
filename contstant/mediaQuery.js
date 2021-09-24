@@ -37,8 +37,19 @@ export const WEDDING_MONOGRAM_SIZE = {
 export const MAP_SIZE = {
 	xs: { height: 300, width: 300 },
 	sm: { height: 300, width: 300 },
-	md: { height: 300, width: 300 },
-	lg: { height: 380, width: 500 },
-	xl: { height: 390, width: 520 },
-	xxl: { height: 400, width: 550 },
+	md: { height: 340, width: 540 },
+	lg: { height: 420, width: 620 },
+	xl: { height: 480, width: 740 },
+	xxl: { height: 520, width: 800 },
+};
+
+const border = '1px solid rgba(255,255,255,0.7)';
+
+export const AKAD_TIME_BORDER = {
+	xs: { borderBottom: border },
+	sm: { borderBottom: border },
+	md: { borderRight: border },
+	lg: { borderRight: border },
+	xl: { borderRight: border },
+	xxl: { borderRight: border },
 };

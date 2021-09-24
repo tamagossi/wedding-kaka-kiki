@@ -71,13 +71,15 @@ const OrganismTestimonial = () => {
 									<h3
 										className="julius"
 										style={{
-											minHeight: 280,
-										}}>
+											minHeight: 900,
+										}}
+									>
 										<div
 											style={{
 												padding: 30,
 												borderRight: '1px solid rgba(255,255,255,0.7)',
-											}}>
+											}}
+										>
 											<AtomCinzelDecorativeText text={`- ${name}`} strong />
 											<br />
 											<AtomText

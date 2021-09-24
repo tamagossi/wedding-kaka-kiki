@@ -6,7 +6,7 @@ import AtomCinzelDecorativeText from '../atoms/cinzel-text';
 import AtomJuliusText from '../atoms/julius-text';
 import AtomText from '../atoms/text';
 import ContentWrapper from '../core/content-wrapper';
-import { FONT_SIZE, MAP_SIZE } from '../../contstant/mediaQuery';
+import { AKAD_TIME_BORDER, FONT_SIZE, MAP_SIZE } from '../../contstant/mediaQuery';
 
 const OrganismInvitation = () => {
 	const size = useMedia();
@@ -15,7 +15,7 @@ const OrganismInvitation = () => {
 	return (
 		<ContentWrapper>
 			<Space className="tc" direction="vertical" size={40}>
-				<AtomText text="Dengan ini memohon doa restu Bapak/Ibu/Saudara/i sekalian dalam pernikahan antara:" />
+				<AtomText text="Dengan ini memohon doa restu Bapak/Ibu/Saudara/i sekalian untuk pernikahan kami:" />
 
 				<Row style={{ flexDirection: 'column' }}>
 					<AtomCinzelDecorativeText
@@ -48,39 +48,40 @@ const OrganismInvitation = () => {
 					<AtomText strong text="Sabtu, 9 Oktober 2021" />
 				</Row>
 
-				<Row style={{ flexDirection: 'row' }}>
+				<Row style={{ flexDirection: 'row' }} gutter={[0, 24]}>
 					<Col
 						xs={24}
 						md={12}
-						lg={12}
 						style={{
 							display: 'flex',
+							flex: 1,
 							flexDirection: 'column',
 							justifyContent: 'center',
-							flex: 1,
-							borderRight: '1px solid rgba(255,255,255,0.7)',
-						}}>
-						<AtomText text="Akad Nikah" additionalSize={-3} strong />
-						<AtomText text="(Hanya dihadiri keluarga)" additionalSize={-3} />
-						<AtomText text="08.00 WIB s.d. Selesai" additionalSize={-3} />
+							...AKAD_TIME_BORDER[size],
+						}}
+					>
+						<AtomText text="Akad Nikah" additionalSize={-1} strong />
+						<AtomText text="(Hanya dihadiri keluarga)" additionalSize={-1} />
+						<AtomText text="08.00 WIB s.d. Selesai" additionalSize={-1} />
 					</Col>
+
 					<Col
 						xs={24}
 						md={12}
-						lg={12}
 						style={{
 							display: 'flex',
 							flexDirection: 'column',
-						}}>
-						<AtomText strong text="Resepsi Pernikahan" additionalSize={-3} />
-						<AtomText text="Sesi 1: Kolega dari Orang Tua" additionalSize={-3} />
-						<AtomText text="10.30 - 12.30 WIB" additionalSize={-3} />
+						}}
+					>
+						<AtomText strong text="Resepsi Pernikahan" additionalSize={-1} />
+						<AtomText text="Sesi 1: Kolega dari Orang Tua" additionalSize={-1} />
+						<AtomText text="10.30 - 12.30 WIB" additionalSize={-1} />
 						<AtomText
 							text="Sesi 2: Rekan dari Kedua Mempelai"
-							additionalSize={-3}
+							additionalSize={-1}
 							style={{ marginTop: '1rem' }}
 						/>
-						<AtomText text="12.30 - 13.45 WIB" additionalSize={-3} />
+						<AtomText text="12.30 - 13.45 WIB" additionalSize={-1} />
 					</Col>
 				</Row>
 
