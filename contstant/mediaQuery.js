@@ -35,9 +35,9 @@ export const WEDDING_MONOGRAM_SIZE = {
 };
 
 export const MAP_SIZE = {
-	xs: { height: 350, width: 420 },
-	sm: { height: 360, width: 440 },
-	md: { height: 370, width: 460 },
+	xs: { height: 300, width: 300 },
+	sm: { height: 300, width: 300 },
+	md: { height: 300, width: 300 },
 	lg: { height: 380, width: 500 },
 	xl: { height: 390, width: 520 },
 	xxl: { height: 400, width: 550 },

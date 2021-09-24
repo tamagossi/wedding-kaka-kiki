@@ -73,7 +73,7 @@ const OrganismInvitation = () => {
 							height={MAP_SIZE[size].height}
 							loading="lazy"
 							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15841.26671034045!2d107.5261747!3d-6.9719159!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x175d3c33a119adf5!2sBumi%20Kresna!5e0!3m2!1sen!2sid!4v1632316029904!5m2!1sen!2sid"
-							style={{ border: 0, marginTop: 25, display: small ? 'none' : 'block' }}
+							style={{ border: 0, marginTop: 25 }}
 							width={MAP_SIZE[size].width}
 						/>
 					</Row>
