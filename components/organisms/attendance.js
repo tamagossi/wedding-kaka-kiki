@@ -120,6 +120,20 @@ const OrganismAttendance = () => {
 								name="gift_amount"
 								placeholder="Jumlah"
 								formRef={form}
+								rules={[
+									{ required: true, message: 'Harus diisi' },
+									({ __ }) => ({
+										validator(_, value) {
+											if (attending && value < 1) {
+												return Promise.reject(
+													new Error('Jumlah transfer harus lebih dari 0')
+												);
+											}
+
+											return Promise.resolve();
+										},
+									}),
+								]}
 							/>
 						</Col>
 					</Row>
