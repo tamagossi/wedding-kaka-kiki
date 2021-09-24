@@ -109,8 +109,7 @@ const OrganismTestimonial = () => {
 						style={{ color: 'white' }}
 						scrollToFirstError
 						initialValues={{
-							greeting:
-								'Hallo Kiki!! Raka!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!',
+							greeting: 'Selamat Kiki!! Tama!! ...',
 						}}
 					>
 						<MoleculeTextInputGroup
