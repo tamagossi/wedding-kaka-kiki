@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import OrganismAttendance from '../components/organisms/attendance';
 import OrganismInvitation from '../components/organisms/invitation';
-import OrganismSurah from '../components/organisms/surah';
+import OrganismHeader from '../components/organisms/header';
 import OrganismTestimonial from '../components/organisms/testimonial';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
 
 			<Row>
 				<Col span={24} className="bg-rose-gold">
-					<OrganismSurah />
+					<OrganismHeader />
 					<OrganismInvitation />
 					<OrganismAttendance />
 					<OrganismTestimonial />

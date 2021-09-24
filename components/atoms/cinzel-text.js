@@ -4,17 +4,13 @@ import { Typography } from 'antd';
 
 import { FONT_SIZE } from '../../contstant/mediaQuery';
 
-const AtomText = ({ additionalSize = 0, text, style, ...props }) => {
+const AtomCinzelDecorativeText = ({ additionalSize = 0, text, style, ...props }) => {
 	const size = useMedia();
 
 	return (
-		<Typography.Text
-			className="raleway honey-white"
-			style={{ marginBottom: 0, fontWeight: 200 }}
-			{...props}
-		>
+		<Typography.Text className="honey-white" style={{ marginBottom: 0 }} {...props}>
 			<span
-				className="raleway honey-white"
+				className="cinzel-decorative honey-white"
 				style={{ color: '#f2f3ef', fontSize: FONT_SIZE[size] + additionalSize, ...style }}
 			>
 				{text}
@@ -23,4 +19,4 @@ const AtomText = ({ additionalSize = 0, text, style, ...props }) => {
 	);
 };
 
-export default AtomText;
+export default AtomCinzelDecorativeText;
