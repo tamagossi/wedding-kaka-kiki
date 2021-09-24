@@ -19,7 +19,6 @@ const OrganismAttendance = () => {
 	const attendanceService = new AttendanceService();
 
 	const [isAttending, setIsAttending] = useState(true);
-	const [invitationForm, setInvitationForm] = useState();
 	const [giftType, setGiftType] = useState(GIFT_ENUM.GOODS);
 	const [bankType, setBankType] = useState(BANK_ENUM.BCA_KAKA);
 	const [form] = Form.useForm();
@@ -27,37 +26,19 @@ const OrganismAttendance = () => {
 
 	const confirmAttendance = async () => {
 		try {
+			await form.validateFields();
+			await giftForm.validateFields();
+
 			const attendanceValue = form.getFieldsValue();
 			const giftValue = giftForm.getFieldsValue();
 
-			const { name, is_attending, attendance_count } = attendanceValue;
-			const { bank } = giftValue;
+			await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
+			message.info('Kunjunganmu sudah tercatat');
 
-			if (is_attending) {
-				if (attendance_count < 1 || attendance_count === undefined) {
-					message.error('Jumlah tamu harus lebih dari 0 jika anda menghadiri acara');
-					return;
-				}
-			} else {
-				attendanceValue.attendance_count = 0;
-			}
-
-			if (!bank) giftValue.bank = BANK_ENUM.BCA_KAKA;
-
-			if (
-				name &&
-				invitationForm &&
-				((is_attending === true && attendance_count > 0) || is_attending === false)
-			) {
-				await attendanceService.addAttendances({ ...attendanceValue, ...giftValue });
-				message.success('Kunjunganmu sudah tercatat');
-
-				form.resetFields();
-				setInvitationForm();
-				setIsAttending();
-			}
+			form.resetFields();
+			giftForm.resetFields();
 		} catch (error) {
-			message.error(error.message);
+			message.error('Periksa kembali data yang anda masukkan');
 		}
 	};
 
@@ -183,13 +164,19 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form form={form}>
+					<Form form={form} initialValues={{ attendance_count: 0 }} scrollToFirstError>
 						<Row gutter={8}>
 							<Col span={24}>
 								<MoleculeTextInputGroup
 									label="Nama"
 									name="name"
 									placeholder="Nama Tamu"
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 								/>
 							</Col>
 
@@ -198,7 +185,12 @@ const OrganismAttendance = () => {
 									label="Tamu dari"
 									name="invitation_from"
 									placeholder="Pilih yang mengundang anda"
-									onChange={setInvitationForm}
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 									options={[
 										{
 											label: 'Ibu Siti Maesaroh / Bpk. Nanang Irawan',
@@ -225,6 +217,12 @@ const OrganismAttendance = () => {
 									label="Apakah anda akan hadir?"
 									name="is_attending"
 									onChange={(e) => setIsAttending(e.target.value)}
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+									]}
 									options={[
 										{
 											label: 'Ya',
@@ -245,6 +243,23 @@ const OrganismAttendance = () => {
 									name="attendance_count"
 									placeholder="Jumlah Tamu"
 									formRef={form}
+									rules={[
+										{
+											required: true,
+											message: 'Tidak boleh kosong',
+										},
+										({ getFieldValue }) => ({
+											validator(_, value) {
+												if (getFieldValue('is_attending') && value > 0) {
+													return Promise.resolve();
+												}
+
+												return Promise.reject(
+													new Error('Jumlah tamu harus lebih dari 0')
+												);
+											},
+										}),
+									]}
 								/>
 							</Col>
 						</Row>
@@ -268,7 +283,11 @@ const OrganismAttendance = () => {
 				</Col>
 
 				<Col xs={24} lg={10}>
-					<Form form={giftForm}>
+					<Form
+						form={giftForm}
+						initialValues={{ bank: BANK_ENUM.BCA_KAKA }}
+						scrollToFirstError
+					>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
@@ -276,7 +295,6 @@ const OrganismAttendance = () => {
 									name="gift_type"
 									placeholder="Pilih hadiah yang ingin anda beri"
 									onChange={(value) => setGiftType(value)}
-									defaultValue={GIFT_ENUM.GOODS}
 									options={[
 										{
 											label: 'Kirim Hadiah',

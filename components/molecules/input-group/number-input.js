@@ -3,7 +3,7 @@ import { Form, Input } from 'antd';
 
 import AtomInputLabel from '../../atoms/input-label';
 
-const MoleculeNumberInputGroup = ({ name, type, label, formRef, ...input }) => {
+const MoleculeNumberInputGroup = ({ name, type, label, formRef, rules, ...input }) => {
 	const formatValue = (event) => {
 		let value = event.target.value;
 		if (typeof value === 'number') value = value?.toString();
@@ -32,7 +32,7 @@ const MoleculeNumberInputGroup = ({ name, type, label, formRef, ...input }) => {
 		<>
 			<AtomInputLabel name={name} label={label} />
 
-			<Form.Item name={name}>
+			<Form.Item name={name} rules={rules}>
 				<Input
 					onChange={formatValue}
 					type="number"
