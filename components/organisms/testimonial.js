@@ -80,7 +80,7 @@ const OrganismTestimonial = () => {
 											<AtomText
 												italic
 												text={`"${greeting}"`}
-												additionalSize={-8}
+												additionalSize={0}
 											/>
 										</div>
 									</h3>

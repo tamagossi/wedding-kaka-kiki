@@ -10,7 +10,7 @@ import { FONT_SIZE, MAP_SIZE } from '../../contstant/mediaQuery';
 
 const OrganismInvitation = () => {
 	const size = useMedia();
-	const small = ['xs', 'sm'].includes(size);
+	const small = ['xs', 'sm', 'md'].includes(size);
 
 	return (
 		<ContentWrapper>

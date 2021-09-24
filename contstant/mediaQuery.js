@@ -19,10 +19,10 @@ export const CAROUSEL_ITEM = {
 export const PADDING_SIZE = {
 	xs: '120px 40px',
 	sm: '120px 40px',
-	md: '120px 80px',
-	lg: '120px 100px',
-	xl: '120px 120px',
-	xxl: '120px 140px',
+	md: '120px 40px',
+	lg: '120px 60px',
+	xl: '120px 80px',
+	xxl: '120px 120px',
 };
 
 export const WEDDING_MONOGRAM_SIZE = {
