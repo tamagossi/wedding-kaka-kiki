@@ -104,17 +104,27 @@ const OrganismTestimonial = () => {
 				)}
 
 				<Col xs={20} lg={15}>
-					<Form form={form} style={{ color: 'white' }}>
+					<Form
+						form={form}
+						style={{ color: 'white' }}
+						scrollToFirstError
+						initialValues={{
+							greeting:
+								'Hallo Kiki!! Raka!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!',
+						}}
+					>
 						<MoleculeTextInputGroup
 							name="name"
 							label="Pengirim"
 							placeholder="ex: Anonymous Tampan"
+							rules={[{ required: true, message: 'Tidak boleh kosong' }]}
 						/>
 
 						<MoleculeTextAreaInputGroup
 							name="greeting"
 							label="Ucapan"
 							placeholder="ex: Hallo Kiki!! Raka!! Semoga bersama kembali ke kampung akhirat dengan mulus ya!!"
+							rules={[{ required: true, message: 'Tidak boleh kosong' }]}
 						/>
 					</Form>
 				</Col>
