@@ -114,7 +114,7 @@ const OrganismAttendance = () => {
 					</Row>
 
 					<Row gutter={24} style={{ marginTop: 20 }}>
-						<Col span={12}>
+						<Col xs={24} md={12}>
 							<MoleculeTextInputGroup
 								label="Nama Pemilik Rekening"
 								name="account_name"
@@ -122,7 +122,7 @@ const OrganismAttendance = () => {
 							/>
 						</Col>
 
-						<Col span={12}>
+						<Col xs={24} md={12}>
 							<MoleculeNumberInputGroup
 								label="Jumlah"
 								name="gift_amount"
@@ -146,12 +146,12 @@ const OrganismAttendance = () => {
 								padding: 10,
 								background: 'white',
 								borderRadius: 10,
-								height: '300px',
+								minHeight: '300px',
 								backgroundImage: `url(${BANK_INFO_ENUM[bankType].image})`,
 								backgroundPosition: 'center',
 								backgroundRepeat: 'no-repeat',
 								backgroundSize: 'contain',
-								width: '300px',
+								minWidth: '300px',
 							}}
 						/>
 					</Row>

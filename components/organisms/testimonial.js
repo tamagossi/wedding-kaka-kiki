@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ContentWrapper from '../core/content-wrapper';
-import { Button, Carousel, Col, Form, message, Row } from 'antd';
+import { Carousel, Col, Form, message, Row } from 'antd';
 import useMedia from 'use-media-antd-query';
 
 import AtomTitleGroup from '../atoms/title-group';
@@ -10,11 +10,13 @@ import MoleculeTextInputGroup from '../molecules/input-group/text-input';
 import convertObjectToArray from '../../utils/convertObjectToArray';
 import shuffleArray from '../../utils/shuffleArray';
 import GreetingService from '../../services/greeting';
+import AtomButton from '../atoms/button';
+import AtomCinzelDecorativeText from '../atoms/cinzel-text';
+import AtomText from '../atoms/text';
+import { CAROUSEL_ITEM } from '../../contstant/mediaQuery';
 
 const OrganismTestimonial = () => {
-	const colSize = useMedia();
-	const isSmall = ['xs', 'sm'].includes(colSize);
-	const isMedium = ['md'].includes(colSize);
+	const size = useMedia();
 
 	const greetingService = new GreetingService();
 	const [greetings, setGreetings] = useState();
@@ -55,16 +57,15 @@ const OrganismTestimonial = () => {
 				<AtomTitleGroup title="Have anything to say?" />
 			</Col>
 
-			<Row justify="center">
+			<Row justify="center" align="top">
 				{greetings && (
 					<Col xs={24} style={{ margin: '40px 0' }}>
-						<Carousel autoplay slidesToShow={isSmall ? 1 : isMedium ? 2 : 4}>
+						<Carousel autoplay slidesToShow={CAROUSEL_ITEM[size]}>
 							{shuffleArray(greetings).map(({ greeting, name }) => (
 								<div>
 									<h3
 										className="julius"
 										style={{
-											color: '#fff',
 											minHeight: 280,
 										}}
 									>
@@ -74,13 +75,13 @@ const OrganismTestimonial = () => {
 												borderRight: '1px solid rgba(255,255,255,0.7)',
 											}}
 										>
-											<p style={{ fontWeight: 900, fontSize: 20 }}>
-												- {name}
-											</p>
-
-											<p style={{ fontSize: 14 }}>
-												<em>"{greeting}"</em>
-											</p>
+											<AtomCinzelDecorativeText text={`- ${name}`} strong />
+											<br />
+											<AtomText
+												italic
+												text={`"${greeting}"`}
+												additionalSize={-8}
+											/>
 										</div>
 									</h3>
 								</div>
@@ -106,14 +107,7 @@ const OrganismTestimonial = () => {
 				</Col>
 
 				<Col xs={20} lg={15}>
-					<Button
-						block
-						onClick={sendGreeting}
-						size="large"
-						style={{ background: '#e0a99f55', color: 'white' }}
-					>
-						Kirim Ucapan
-					</Button>
+					<AtomButton onClick={sendGreeting}>Kirim Ucapan</AtomButton>
 				</Col>
 			</Row>
 		</ContentWrapper>

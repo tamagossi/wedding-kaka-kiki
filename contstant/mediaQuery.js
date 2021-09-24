@@ -7,6 +7,15 @@ export const FONT_SIZE = {
 	xxl: 22,
 };
 
+export const CAROUSEL_ITEM = {
+	xs: 1,
+	sm: 1,
+	md: 2,
+	lg: 4,
+	xl: 4,
+	xxl: 4,
+};
+
 export const PADDING_SIZE = {
 	xs: '120px 40px',
 	sm: '120px 40px',
