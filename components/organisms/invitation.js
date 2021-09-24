@@ -15,7 +15,7 @@ const OrganismInvitation = () => {
 	return (
 		<ContentWrapper>
 			<Space className="tc" direction="vertical" size={40}>
-				<AtomText text="Dengan ini memohon doa restu Bapak/Ibu/Saudara/i sekalian untuk pernikahan kami:" />
+				<AtomText text="Dengan mengucap rasa syukur ke hadirat Allah SWT, dengan ini kami meminta do'a restu Bapak/Ibu/Saudara/i pada acara pernikahan kami:" />
 
 				<Row style={{ flexDirection: 'column' }}>
 					<AtomCinzelDecorativeText
@@ -48,7 +48,7 @@ const OrganismInvitation = () => {
 					<AtomText strong text="Sabtu, 9 Oktober 2021" />
 				</Row>
 
-				<Row style={{ flexDirection: 'row' }} gutter={[0, 24]}>
+				<Row style={{ flexDirection: 'row' }} gutter={[0, 12]}>
 					<Col
 						xs={24}
 						md={12}
@@ -58,8 +58,8 @@ const OrganismInvitation = () => {
 							flexDirection: 'column',
 							justifyContent: 'center',
 							...AKAD_TIME_BORDER[size],
-						}}
-					>
+							paddingBottom: '.5rem',
+						}}>
 						<AtomText text="Akad Nikah" additionalSize={-1} strong />
 						<AtomText text="(Hanya dihadiri keluarga)" additionalSize={-1} />
 						<AtomText text="08.00 WIB s.d. Selesai" additionalSize={-1} />
@@ -71,15 +71,14 @@ const OrganismInvitation = () => {
 						style={{
 							display: 'flex',
 							flexDirection: 'column',
-						}}
-					>
+						}}>
 						<AtomText strong text="Resepsi Pernikahan" additionalSize={-1} />
 						<AtomText text="Sesi 1: Kolega dari Orang Tua" additionalSize={-1} />
 						<AtomText text="10.30 - 12.30 WIB" additionalSize={-1} />
 						<AtomText
 							text="Sesi 2: Rekan dari Kedua Mempelai"
 							additionalSize={-1}
-							style={{ marginTop: '1rem' }}
+							style={{ marginTop: '.5rem' }}
 						/>
 						<AtomText text="12.30 - 13.45 WIB" additionalSize={-1} />
 					</Col>
@@ -87,7 +86,7 @@ const OrganismInvitation = () => {
 
 				<Row style={{ flexDirection: 'column' }}>
 					<Row justify="center">
-						<AtomText text="Yang bertempat di &nbsp;" />
+						<AtomText text="Yang bertempat di&nbsp;" />
 						<AtomText text="Bumi Kresna" strong />
 						<AtomText text=", Jl. Terusan Soreang, Cipatik, Pamekaran, Soreang - Kab. Bandung" />
 					</Row>
