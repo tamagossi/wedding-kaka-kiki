@@ -26,7 +26,7 @@ export const BANK_INFO_ENUM = {
 	},
 	BSI_KAKA: {
 		bank_name: 'Bank BSI',
-		no: '116-929-3846',
+		no: '116-929-3848',
 		name: 'Auliya Raka Pratama',
 		image: '/bsi_kaka.png',
 	},
