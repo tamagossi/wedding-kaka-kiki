@@ -74,13 +74,13 @@ const OrganismInvitation = () => {
 						}}>
 						<AtomText strong text="Resepsi Pernikahan" additionalSize={-1} />
 						<AtomText text="Sesi 1: Kolega dari Orang Tua" additionalSize={-1} />
-						<AtomText text="10.30 - 12.30 WIB" additionalSize={-1} />
+						<AtomText text="10.30 - 11.30 WIB" additionalSize={-1} />
 						<AtomText
 							text="Sesi 2: Rekan dari Kedua Mempelai"
 							additionalSize={-1}
 							style={{ marginTop: '.5rem' }}
 						/>
-						<AtomText text="12.30 - 13.45 WIB" additionalSize={-1} />
+						<AtomText text="11.30 - 13.45 WIB" additionalSize={-1} />
 					</Col>
 				</Row>
 
