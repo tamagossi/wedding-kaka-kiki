@@ -20,7 +20,7 @@ const OrganismAttendance = () => {
 	const attendanceService = new AttendanceService();
 
 	const [isAttending, setIsAttending] = useState(true);
-	const [giftType, setGiftType] = useState(GIFT_ENUM.GOODS);
+	const [giftType, setGiftType] = useState();
 	const [bankType, setBankType] = useState(BANK_ENUM.BCA_KAKA);
 	const [selectedTransferAmount, setSelectedTransferAmount] = useState();
 	const [form] = Form.useForm();
@@ -306,9 +306,8 @@ const OrganismAttendance = () => {
 			<Row justify="center" gutter={[0, 36]}>
 				<Col className="tc" xs={24} lg={18}>
 					<AtomTitleGroup
-						title="Wedding Gift"
-						subtitle="Your blessing and coming to our wedding are enough. However, if you want
-						give a gift we make it easier for you. Thank you"
+						title="Hadiah Pernikahan"
+						subtitle="Doa dan kedatangan Bapak/Ibu/Saudara/i sekalian sudah cukup bagi kami. Bagaimanapun, jika Bapak/Ibu/Saudara/i ingin mengirimkan hadiah, kami menyediakan opsi untuk mempermudah penyampaian hadiah:"
 					/>
 				</Col>
 

@@ -60,7 +60,7 @@ const OrganismTestimonial = () => {
 		<ContentWrapper style={{ minHeight: 0 }}>
 			<Row justify="center">
 				<Col className="tc" span={24}>
-					<AtomTitleGroup title="Have anything to say?" />
+					<AtomTitleGroup title="Ada yang ingin disampaikan?" />
 				</Col>
 
 				{greetings && (
@@ -71,10 +71,6 @@ const OrganismTestimonial = () => {
 									<h3
 										className="julius"
 										style={{
-											overflowY: 'auto',
-											maxHeight: ['xs', 'sm', 'md'].includes(size)
-												? 260
-												: 290,
 											minHeight: ['xs', 'sm', 'md'].includes(size)
 												? 230
 												: 260,
