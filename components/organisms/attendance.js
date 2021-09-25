@@ -96,7 +96,7 @@ const OrganismAttendance = () => {
 
 					<AtomText text="Pilih Jumlah:" />
 
-					<Row justify="space-around" gutter={24}>
+					<Row justify="space-around" gutter={[24, 12]}>
 						<AtomTransferCard
 							icon={selectedTransferAmount === 50000 && <CheckOutlined />}
 							value={50000}

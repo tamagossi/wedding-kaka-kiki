@@ -3,7 +3,7 @@ import React from 'react';
 
 const AtomTransferCard = ({ value, onClick, ...buttonProps }) => {
 	return (
-		<Col span={5}>
+		<Col xs={12} lg={6}>
 			<Button block onClick={onClick} style={{ borderRadius: 5 }} {...buttonProps}>
 				{value}
 			</Button>
