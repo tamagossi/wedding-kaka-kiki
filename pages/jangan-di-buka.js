@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Tabs, Table, message, Divider } from 'antd';
 
 import AttendanceService from '../services/attendance';
-import GreetingService from '../services/greeting';
 
 import convertObjectToArray from '../utils/convertObjectToArray';
 import formatCurrency from '../utils/currencyFormatter';
 import { BANK_ENUM, BANK_INFO_ENUM } from '../contstant/enums';
 import AtomSummaryGroup from '../components/atoms/summary-group';
+import OrganismGreetingSummaryTab from '../components/organisms/summary/greeting';
 
 const JanganDiBuka = () => {
 	const attendanceService = new AttendanceService();
-	const greetingService = new GreetingService();
-	const [greetings, setGreetings] = useState([]);
 	const [attendances, setAttendances] = useState([]);
 
 	const getAttendances = async () => {
@@ -26,21 +24,9 @@ const JanganDiBuka = () => {
 		}
 	};
 
-	const getGreeting = async () => {
-		try {
-			const greetings = await greetingService.getGreetings();
-			if (greetings) {
-				setGreetings(convertObjectToArray(greetings));
-			}
-		} catch (error) {
-			message.error(error.message);
-		}
-	};
-
 	useEffect(() => {
 		(async () => {
 			await getAttendances();
-			await getGreeting();
 		})();
 	}, []);
 
@@ -209,14 +195,9 @@ const JanganDiBuka = () => {
 							]}
 						/>
 					</Tabs.TabPane>
+
 					<Tabs.TabPane key="greeting" tab="Ucapan">
-						<Table
-							dataSource={greetings}
-							columns={[
-								{ title: 'Nama', dataIndex: 'name', key: 'name' },
-								{ title: 'Ucapan', dataIndex: 'greeting', key: 'greeting' },
-							]}
-						/>
+						<OrganismGreetingSummaryTab />
 					</Tabs.TabPane>
 				</Tabs>
 			</Col>
