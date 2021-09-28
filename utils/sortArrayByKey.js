@@ -1,5 +1,4 @@
 const sortArrayByKey = ({ array, key, order }) => {
-	console.log('kesini kan');
 	let type = typeof array[0][key];
 	const isAsc = order === 'ascend';
 
@@ -8,8 +7,8 @@ const sortArrayByKey = ({ array, key, order }) => {
 
 	if (type === 'string') {
 		return array.sort((a, b) => {
-			let fa = a[key].toLowerCase(),
-				fb = b[key].toLowerCase();
+			let fa = a[key]?.toLowerCase(),
+				fb = b[key]?.toLowerCase();
 
 			if (fa < fb) return isAsc ? -1 : 1;
 			if (fa > fb) return isAsc ? 1 : -1;
