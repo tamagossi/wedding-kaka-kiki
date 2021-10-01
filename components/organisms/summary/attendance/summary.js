@@ -58,10 +58,10 @@ const OrganismAttendanceSummary = ({ attendances }) => {
 				totalBSIKaka = totalBSIKaka + parseInt(gift_amount);
 			}
 			if (bank === BANK_ENUM.BSI_KIKI) {
-				totlBSIKiki = totlBSIKiki + parseInt(gift_amount);
+				totalBSIKiki = totalBSIKiki + parseInt(gift_amount);
 			}
 			if (bank === BANK_ENUM.BNI_KIKI) {
-				totalBNItotalBNIKiki = totalBNIKiki + parseInt(gift_amount);
+				totalBNIKiki = totalBNIKiki + parseInt(gift_amount);
 			}
 		}
 	});
