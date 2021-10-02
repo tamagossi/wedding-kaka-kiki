@@ -66,22 +66,20 @@ const OrganismTestimonial = () => {
 				{greetings && (
 					<Col xs={24} style={{ margin: '40px 0' }}>
 						<Carousel autoplay slidesToShow={CAROUSEL_ITEM[size]}>
-							{shuffleArray(greetings).map(({ greeting, name }) => (
-								<div>
+							{shuffleArray(greetings).map(({ greeting, name }, index) => (
+								<div key={index}>
 									<h3
 										className="julius"
 										style={{
 											minHeight: ['xs', 'sm', 'md'].includes(size)
 												? 230
 												: 260,
-										}}
-									>
+										}}>
 										<div
 											style={{
 												padding: 30,
 												borderRight: '1px solid rgba(255,255,255,0.7)',
-											}}
-										>
+											}}>
 											<AtomCinzelDecorativeText text={`- ${name}`} strong />
 											<br />
 											<AtomText
@@ -106,8 +104,7 @@ const OrganismTestimonial = () => {
 						scrollToFirstError
 						initialValues={{
 							greeting: 'Selamat Kiki!! Tama!! ...',
-						}}
-					>
+						}}>
 						<MoleculeTextInputGroup
 							name="name"
 							label="Pengirim"
