@@ -26,7 +26,7 @@ const OrganismInvitation = () => {
 								additionalSize={FONT_SIZE[size]}
 							/>
 							<AtomText
-								text="Putri kedua dari Ibu Siti Maesaroh dan Bapak Nanang Irawan"
+								text="Putri kedua dari Bapak Nanang Irawan & Ibu Siti Maesaroh"
 								additionalSize={-2}
 							/>
 							<AtomCinzelDecorativeText
@@ -40,7 +40,7 @@ const OrganismInvitation = () => {
 								additionalSize={FONT_SIZE[size]}
 							/>
 							<AtomText
-								text="Putra pertama dari Ibu Nia Krisni F dan (Alm) Agus Susanto"
+								text="Putra pertama dari (Alm) Agus Susanto & Ibu Nia Krisni F"
 								additionalSize={-2}
 							/>
 						</Row>
