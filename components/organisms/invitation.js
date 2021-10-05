@@ -40,7 +40,7 @@ const OrganismInvitation = () => {
 								additionalSize={FONT_SIZE[size]}
 							/>
 							<AtomText
-								text="Putra pertama dari (Alm) Agus Susanto & Ibu Nia Krisni F"
+								text="Putra pertama dari (Alm) Bapak Agus Susanto & Ibu Nia Krisni F"
 								additionalSize={-2}
 							/>
 						</Row>
