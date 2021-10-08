@@ -83,10 +83,10 @@ const OrganismAttendance = () => {
 								label: 'BANK BSI - Auliya Raka Pratama',
 								value: BANK_ENUM.BSI_KAKA,
 							},
-							{
-								label: 'BANK BSI - Kiki Pratiwi',
-								value: BANK_ENUM.BSI_KIKI,
-							},
+							// {
+							// 	label: 'BANK BSI - Kiki Pratiwi',
+							// 	value: BANK_ENUM.BSI_KIKI,
+							// },
 							{
 								label: 'BANK BNI - Kiki Pratiwi',
 								value: BANK_ENUM.BNI_KIKI,
@@ -315,8 +315,7 @@ const OrganismAttendance = () => {
 					<Form
 						form={giftForm}
 						initialValues={{ bank: BANK_ENUM.BCA_KAKA }}
-						scrollToFirstError
-					>
+						scrollToFirstError>
 						<Row>
 							<Col span={24}>
 								<MoleculeSelectInput
